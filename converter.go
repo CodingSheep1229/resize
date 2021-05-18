@@ -23,6 +23,9 @@ func clampUint8(in int32) uint8 {
 	// casting a negative int to an uint will result in an overflown
 	// large uint. this behavior will be exploited here and in other functions
 	// to achieve a higher performance.
+	if in < 0 {
+		return 0
+	}
 	if uint32(in) < 256 {
 		return uint8(in)
 	}
